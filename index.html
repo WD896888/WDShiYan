@@ -490,7 +490,6 @@
   <div class="container">
     <header>
       <h1 class="header-title">叮咚~</h1>
-      <p class="header-subtitle">点击图片可全屏查看</p>
     </header>
     
     <main class="image-section">
@@ -672,6 +671,18 @@
         }
       }
     });
+
+    // 鼠标滚轮缩放（电脑端）
+    fullscreenOverlay.addEventListener('wheel', function(e) {
+      if (fullscreenOverlay.classList.contains('active')) {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+          zoomIn();
+        } else {
+          zoomOut();
+        }
+      }
+    }, { passive: false });
 
     let initialDistance = 0;
     let initialScale = 1;
